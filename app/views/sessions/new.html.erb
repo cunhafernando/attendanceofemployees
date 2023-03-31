@@ -1,0 +1,41 @@
+<div class="modal modal-signin position-fixed d-block bg-secondary py-5" tabindex="-1" role="dialog" id="modalSignin">
+  <div class="modal-dialog position-fixed top-50 start-50 translate-middle" role="document">
+    <div class="modal-content rounded-4 shadow">
+      <div class="modal-header p-5 pb-4 border-bottom-0">
+        <h4 class="modal-title fs-2" ><%= image_tag "hegv_logo.jpg", class: "mx-1" %></h4>
+        <h1 class="fw-bold mb-0 fs-5"><strong>Dashboard de Efetivos Hospitalar <br></strong>Login</h1>
+        
+      </div>
+
+      <div class="modal-body p-5 pt-0">
+            <%= form_with url: login_path do |f| %>
+                <div class="form-floating mb-3">
+                    
+                    <%= f.text_field :username, class: "form-control rounded-3", id: "floatingInput", placeholder: "Nome de usuário" %>
+                    <%= f.label "Nome de usuário", for: "floatingInput" %>
+                </div>
+                <div class="form-floating mb-3">
+                    <%= f.password_field :password, class: "form-control rounded-3", id: "floatingPassword", placeholder: "Password" %>
+                    <%= f.label "Senha", for: "floatingPassword", autocomplete: "off"  %>
+                </div>
+                <%= f.submit "Entrar", class: "w-100 mb-2 btn btn-lg rounded-3 btn-primary" %>
+                <small class="text-muted">Caso não tenha usuário cadastrado, entrar em contato com o Suporte TIC.</small>
+                <hr class="my-4">
+                <!--<h2 class="fs-5 fw-bold mb-3">Or use a third-party</h2>
+                <button class="w-100 py-2 mb-2 btn btn-outline-dark rounded-3" type="submit">
+                    <svg class="bi me-1" width="16" height="16"><use xlink:href="#twitter"/></svg>
+                    Sign up with Twitter
+                </button>
+                <button class="w-100 py-2 mb-2 btn btn-outline-primary rounded-3" type="submit">
+                    <svg class="bi me-1" width="16" height="16"><use xlink:href="#facebook"/></svg>
+                    Sign up with Facebook
+                </button>
+                <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="submit">
+                    <svg class="bi me-1" width="16" height="16"><use xlink:href="#github"/></svg>
+                    Sign up with GitHub
+                </button>-->
+            <% end %>
+      </div>
+    </div>
+  </div>
+</div>

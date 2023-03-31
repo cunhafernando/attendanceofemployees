@@ -1,0 +1,44 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-9">
+      <h3 class="mt-3">Usuários</h3>
+    </div>
+    <div class="col-3 text-end">
+      <%= link_to "", new_user_path, class: 'mt-3 btn btn-outline-primary bi bi-person-plus' %>
+    </div>
+    <h1></h1>
+
+    <div id="users">
+      <table id="table" data-height="500" data-toggle="table" data-search="true" data-height="500" data-pagination="true" data-search-accent-neutralise="true" class="table table-bordered table-striped" >
+        <thead>
+          <tr>
+            <th scope="col">Usuário</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Matrícula</th>
+            <th scope="col">Moderação</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= user.username %></td>
+              <td><%= user.firstname %> <%= user.lastname %></td>
+              <td><%= user.registration %></td>
+              <td><%= user.role %></td>
+              <td><%= link_to '', user, class: "btn btn-primary bi bi-eye" %></td>
+              <td><%= link_to '', edit_user_path(user), class: "btn btn-primary bi bi-pencil-square" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<input id="chkToggle" type="checkbox" data-toggle="toggle" data-size="sm" />
+
+
+<input type="checkbox" data-toggle="toggle" data-on="Sim" data-off="Não" data-size="sm" />

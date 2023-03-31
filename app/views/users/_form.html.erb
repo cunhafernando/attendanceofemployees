@@ -1,0 +1,54 @@
+<%= form_with(model: user) do |form| %>
+  <% if user.errors.any? %>
+    <div class="container">
+      <div class="row">
+        <div class="col alert alert-success alert-dismissible fade show mt-3" role="alert">
+          <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+          <ul>
+            <% user.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <div class="row g-3 mb-2" >
+    <div class="col-md-4">
+      <strong><%= form.label "Nome de usuário", class: "form-label" %></strong>
+      <%= form.text_field :username, autocomplete: "off", class: "form-control" %>
+    </div>
+
+    <div class="col-md-4">
+      <strong><%= form.label "Nome", class: "form-label" %></strong>
+      <%= form.text_field :firstname, autocomplete: "off", class: "form-control" %>
+    </div>
+
+    <div class="col-md-4">
+      <strong><%= form.label "Sobrenome", class: "form-label" %></strong>
+      <%= form.text_field :lastname, autocomplete: "off", class: "form-control" %>
+    </div>
+
+    <div class="col-md-4">
+      <strong><%= form.label "Matrícula", class: "form-label" %></strong>
+      <%= form.text_field :registration, autocomplete: "off", class: "form-control" %>
+    </div>
+
+    <div class="col-md-4">
+      <strong><%= form.label "Moderação", class: "form-label" %></strong>
+      <%= form.select :role, options_for_select([  ["Selecione um", ""],  "user", "moderator", "admin"]), 
+      {}, { class: "form-select" } %>
+    </div>
+
+    <div class="col-md-4">
+      <strong><%= form.label "Senha", class: "form-label" %></strong>
+      <%= form.password_field :password, autocomplete: "off", class: "form-control"  %>
+    </div>
+
+    <div>
+      <%= form.submit 'Salvar', :class => 'btn btn-success' %>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,28 @@
+<div id="<%= dom_id timesheet %>">
+  <p>
+    <strong>Sector:</strong>
+    <%= timesheet.sector.name %>
+    <table id="table" data-height="500" data-toggle="table" data-search="true" data-height="500" data-pagination="true" data-search-accent-neutralise="true" class="table table-bordered table-striped" >
+    <thead>
+      <tr>
+        <th scope="col">Funcionário</th>
+        <th scope="col">Cargo</th>
+        <th scope="col">Local</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @timesheet.line_employees.each do |line_employee|  %>
+        <tr>
+          <td><%= line_employee.employee.full_name %></td>
+          <td><%= line_employee.employee.office.name %></td>
+          <td><%= line_employee.employee.sectional.name %></td>
+          <td><%= line_employee.status %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+    
+  </p>
+
+</div>

@@ -1,0 +1,16 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-9">
+      <h3 class="mt-3">Editar</h3>
+    </div>
+    <div class="col-3 text-end">
+    </div>
+    <%= render "form", sectional: @sectional %>
+    <br>
+    <div>
+      <%= link_to "Mostrar", @sectional, class: "btn btn-primary" %>
+      <%= link_to "Voltar", sectionals_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
+

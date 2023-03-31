@@ -1,0 +1,32 @@
+<div id="<%= dom_id employee %>">
+  <form>
+    <fieldset disabled>
+      <div class="row" >
+        <div class="col-3 mb-3">
+          <label for="disabledTextInput" class="form-label"><strong>Nome:</strong></label>
+          <input type="text" id="disabledTextInput" class="form-control" placeholder="<%= employee.firstname %>">
+        </div>
+        <div class="col-3 mb-3">
+          <label for="disabledTextInput" class="form-label"><strong>Sobrenome:</strong></label>
+          <input type="text" id="disabledTextInput" class="form-control" placeholder="<%= employee.lastname %>">
+        </div>
+        <div class="col-3 mb-3">
+          <label for="disabledTextInput" class="form-label"><strong>Matrícula:</strong></label>
+          <input type="text" id="disabledTextInput" class="form-control" placeholder="<%= employee.registration %>">
+        </div>
+        <div class="col-3 mb-3">
+          <label for="disabledTextInput" class="form-label"><strong>Cargo:</strong></label>
+          <input type="text" id="disabledTextInput" class="form-control" placeholder="<%= employee.office.name %>">
+        </div>
+        <div class="col-3 mb-3">
+          <label for="disabledTextInput" class="form-label"><strong>Local:</strong></label>
+          <input type="text" id="disabledTextInput" class="form-control" placeholder="<%= employee.sectional.name %>">
+        </div>
+        <div class="col-3 mb-3">
+          <label for="disabledTextInput" class="form-label"><strong>Setor:</strong></label>
+          <input type="text" id="disabledTextInput" class="form-control" placeholder="<%= employee.sector.name %>">
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>

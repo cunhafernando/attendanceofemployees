@@ -1,0 +1,50 @@
+<header class="header" id="header" >
+    <div class="header_toggle"> <i class='bx bx-arrow-from-left text-primary' id="header-toggle" ></i> </div>
+    <div class=""> <% if logged_in? %><%= current_user.firstname %> <%= current_user.lastname %> <%end%></div>
+</header>
+<div class="l-navbar bg-primary" id="nav-bar">
+    <nav class="nav">
+        <div> <a href="#" class="nav_logo"> <i class='bx bx-first-aid nav_logo-icon'></i> <span class="nav_logo-name">Inventário de Equipamentos</span> </a>
+            <div class="nav_list">
+                <!--<a href="#" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a>-->
+                
+                <% if logged_in? && current_user.admin? %>
+                    <%= link_to users_path, class:"nav_link #{current? "active", users_path}" do %>
+                        <i class='bx bxs-user nav_icon'></i> <span class="nav_name">Usários</span>
+                    <% end %>
+                    <%= link_to offices_path, class:"nav_link #{current? "active", offices_path}" do %>
+                        <i class='bx bx-run nav_icon'></i> <span class="nav_name">Cargo</span>
+                    <% end %>
+                    <%= link_to sectionals_path, class:"nav_link #{current? "active", sectionals_path}" do %>
+                        <i class='bx bxs-building-house nav_icon'></i> <span class="nav_name">Local</span>
+                    <% end %>
+                    <%= link_to sectors_path, class:"nav_link #{current? "active", sectors_path}" do %>
+                        <i class='bx bxs-building nav_icon'></i> <span class="nav_name">Setor</span>
+                    <% end %>
+                <% end %>
+                <% if logged_in? %>
+                    <%= link_to employees_path, class:"nav_link #{current? "active", employees_path}" do %>
+                        <i class='bx bxs-user-plus nav_icon'></i> <span class="nav_name">Funcionários</span>
+                    <% end %>
+                    <%= link_to timesheets_path, class:"nav_link #{current? "active", timesheets_path}" do %>
+                        <i class='bx bxs-user nav_icon'></i> <span class="nav_name">Efetivo</span>
+                    <% end %>  
+                <% end %>
+                
+                <!--<a href="#" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">Messages</span> </a>
+                <a href="#" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Bookmark</span> </a>
+                <a href="#" class="nav_link"> <i class='bx bx-folder nav_icon'></i> <span class="nav_name">Files</span> </a>
+                <a href="#" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Stats</span> </a>-->
+            </div>
+        </div>
+        <!--<a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Sair</span> </a>-->
+        <% if logged_in? %>
+            <%= link_to logout_path, method: :delete, class:"nav_link" do %>
+                <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Sair</span>
+            <% end %>
+        <% else %>
+            
+        <% end %>
+    </nav>
+</div>
+    

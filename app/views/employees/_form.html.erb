@@ -1,0 +1,52 @@
+<%= form_with(model: employee) do |form| %>
+  <% if employee.errors.any? %>
+    <div class="container">
+      <div class="row">
+        <div class="col alert alert-success alert-dismissible fade show mt-3" role="alert">
+          <strong>Encontramos <%= pluralize(employee.errors.count, "error") %> ao salvar o formulário.</strong>
+
+          <ul>
+            <% employee.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <div class="row g-3 mb-2">
+    <div class="col-md-4">
+      <strong><%= form.label "Nome:", class: "form-label" %></strong>
+      <%= form.text_field :firstname, class: "form-control" %>
+    </div>
+
+    <div class="col-md-4">
+      <strong><%= form.label "Sobrenome:", class: "form-label" %></strong>
+      <%= form.text_field :lastname, class: "form-control" %>
+    </div>
+
+    <div class="col-md-4">
+      <strong><%= form.label "Matrícula:", class: "form-label" %></strong>
+      <%= form.text_field :registration, class: "form-control" %>
+    </div>
+
+    <div class="col-md-4">
+      <strong><%= form.label "Cargo:", class: "form-label" %></strong>
+      <%= form.collection_select :office_id, Office.all, :id, :name, {prompt: "Selecione um cargo"}, {class: "form-select"} %>
+    </div>
+    <div class="col-md-4">
+      <strong><%= form.label "Local:", class: "form-label" %></strong>
+      <%= form.collection_select :sectional_id, Sectional.all, :id, :name, {prompt: "Selecione um local"}, {class: "form-select"} %>
+    </div>
+
+    <div class="col-md-4">
+      <strong><%= form.label "Setor:", class: "form-label" %></strong>
+      <%= form.collection_select :sector_id, Sector.all, :id, :name, {prompt: "Selecione um setor"}, {class: "form-select"} %>
+    </div>
+
+    <div>
+      <%= form.submit 'Salvar', class: 'btn btn-success' %>
+    </div>
+  </div>
+<% end %>

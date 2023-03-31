@@ -1,0 +1,34 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Registro de Efetivos</h1>
+
+<div id="timesheets">
+  
+
+  <table id="table" data-height="500" data-toggle="table" data-search="true" data-height="500" data-pagination="true" data-search-accent-neutralise="true" class="table table-bordered table-striped" >
+    <thead>
+      <tr>
+        <th scope="col">Nome do setor</th>
+        <th scope="col">Data</th>
+        <th scope="col">Data de atualização</th>
+        <th scope="col">Hora de atualização</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @timesheets.each do |timesheet|  %>
+        <tr>
+          <td><%= timesheet.sector.name %></td>
+          <td><%= timesheet.created_at.strftime("%d/%m/%Y") %></td>
+          <td><%= timesheet.updated_at.strftime("%d/%m/%Y") %></td>
+          <td><%= timesheet.updated_at.strftime("%H:%M") %></td>
+          <td><%= link_to '', timesheet, class: "btn btn-primary bi bi-eye" %></td>
+          <td><%= link_to '', edit_timesheet_path(timesheet), class: "btn btn-primary bi bi-pencil-square" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= link_to "New timesheet", new_timesheet_path %>

@@ -1,0 +1,28 @@
+<%= form_with(model: sectional) do |form| %>
+  <% if sectional.errors.any? %>
+    <div class="container">
+        <div class="row">
+            <div class="col alert alert-success alert-dismissible fade show mt-3" role="alert">
+              <strong>Encontramos <%= pluralize(sectional.errors.count, "error") %> ao salvar o formulário.</strong>
+              <ul>
+                <% sectional.errors.each do |error| %>
+                  <li><%= error.full_message %></li>
+                <% end %>
+              </ul>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+  <% end %>
+
+  <div class="row g-3 mb-2">
+    <div class="col-md-4">
+      <strong><%= form.label "Local:", class: "form-label" %></strong>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+
+    <div>
+      <%= form.submit "Salvar", class: 'btn btn-success' %>
+    </div>
+  </div>
+<% end %>

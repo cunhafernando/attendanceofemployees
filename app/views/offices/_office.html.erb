@@ -1,0 +1,18 @@
+<div id="<%= dom_id office %>">
+  <p>
+    <strong>Name:</strong>
+    <%= office.name %>
+  </p>
+
+
+  <form>
+    <fieldset disabled>
+      <div class="row" >
+        <div class="col-3 mb-3">
+          <label for="disabledTextInput" class="form-label"><strong>Cargo:</strong></label>
+          <input type="text" id="disabledTextInput" class="form-control" placeholder="<%= office.name %>">
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>

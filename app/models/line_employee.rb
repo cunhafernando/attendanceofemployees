@@ -3,7 +3,7 @@ class LineEmployee < ApplicationRecord
     belongs_to :timesheet
   
     validates :status, presence: true
-    enum status: [:presenca, :falta, :atestado, :inss, :ferias, :licenca, :atrasado]
+    enum status: [:presenca, :falta, :atestado, :inss, :ferias, :licenca, :atrasado, :vacancia, :antecipada]
 
     
   end

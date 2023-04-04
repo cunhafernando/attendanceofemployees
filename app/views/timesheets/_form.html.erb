@@ -1,41 +1,45 @@
 <%= form_with(model: timesheet) do |form| %>
   <% if timesheet.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(timesheet.errors.count, "error") %> prohibited this timesheet from being saved:</h2>
+    <div class="container">
+      <div class="row">
+        <div class="col alert alert-success alert-dismissible fade show mt-3" role="alert">
+          <strong>Encontramos <%= pluralize(timesheet.errors.count, "error") %> ao salvar o formulário.</strong>
 
-      <ul>
-        <% timesheet.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+          <ul>
+            <% timesheet.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      </div>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :sector, style: "display: block" %>
-    <%= form.collection_select :sector_id, Sector.all, :id, :name, {prompt: "Selecione um setor"}, {class: "form-select"} %>
-  </div>
-  <table id="table" data-height="500" data-toggle="table" data-search="true" data-height="500" data-pagination="true" data-search-accent-neutralise="true" class="table table-bordered table-striped" >
-    <thead>
+  <div class="row g-3 mb-2">
+    <div class="col-3 mb-3" >
+      <strong><%= form.label "Setor", class: "form-label" %></strong>
+      <%= form.collection_select :sector_id, Sector.all, :id, :name, {prompt: "Selecione um setor"}, {class: "form-select"} %>
+    </div>
+    <table id="table" data-height="500" data-toggle="table" data-height="500" data-pagination="true" data-search-accent-neutralise="true" class="table table-bordered table-striped" >
+      <thead>
+        <tr>
+          <th scope="col">Funcionários</th>
+          <th scope="col">Status</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+              
+      <%= form.fields_for :line_employees do |line_employee_form| %>
       <tr>
-        <th scope="col">Status</th>
-        <th scope="col">Funcionário</th>
-        
+          <td><%= line_employee_form.collection_select :employee_id, Employee.all, :id, :full_name, {prompt: "Selecione"}, {class: "form-select"} %></td>
+          <td><%= line_employee_form.select :status, options_for_select([  ["Selecione", ""],  "presenca", "falta", "atestado", "inss", "ferias", "licenca", "atrasado", "vacancia", "antecipada"]), {}, { class: "form-select" } %></td>
       </tr>
-    </thead>
-    <tbody>
-  
-    
-    <%= form.fields_for :line_employees do |line_employee_form| %>
-    <tr>
-        <td><%= line_employee_form.select :status, options_for_select([  ["Selecione um", ""],  "presenca", "falta", "atestado", "inss", "ferias", "licenca", "atrasado"]), {}, { class: "form-select" } %></td>
-        <td><%= line_employee_form.collection_select :employee_id, Employee.all, :id, :full_name, {prompt: "Selecione um local"}, {class: "form-select"} %></td>
-    </tr>
-    <% end %>
-    
-  </tbody>
-  </table>
-
+      <% end %>
+      
+    </tbody>
+    </table>
+  </div>
   <div>
     <%= form.submit %>
   </div>

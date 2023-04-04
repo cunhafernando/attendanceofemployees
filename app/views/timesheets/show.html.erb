@@ -1,10 +1,17 @@
-<p style="color: green"><%= notice %></p>
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-9">
+      <h3 class="mt-3">Efetivos</h3>
+    </div>
+    <div class="col-3 text-end">
+      <%= link_to "", new_timesheet_path, class: 'mt-3 btn btn-outline-primary bi bi-plus' %>
+    </div>
+    <%= render @timesheet %>
 
-<%= render @timesheet %>
-
-<div>
-  <%= link_to "Edit this timesheet", edit_timesheet_path(@timesheet) %> |
-  <%= link_to "Back to timesheets", timesheets_path %>
-
-  <%= button_to "Destroy this timesheet", @timesheet, method: :delete %>
+    <div>
+      <%= link_to "Editar", edit_timesheet_path(@timesheet), class: "btn btn-primary" %>
+      <%= link_to "Voltar", timesheets_path, class: "btn btn-primary" %>
+      <%= button_to "Apagar", @timesheet, method: :delete, class: "mt-2 btn btn-danger" %>
+    </div>
+  </div>
 </div>

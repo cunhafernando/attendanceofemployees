@@ -29,7 +29,7 @@ class TimesheetsController < ApplicationController
 
     respond_to do |format|
       if @timesheet.save
-        format.html { redirect_to timesheet_url(@timesheet), notice: "Timesheet was successfully created." }
+        format.html { redirect_to timesheet_url(@timesheet), notice: "O registro de efetivo foi criado com sucesso." }
         format.json { render :show, status: :created, location: @timesheet }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -42,7 +42,7 @@ class TimesheetsController < ApplicationController
   def update
     respond_to do |format|
       if @timesheet.update(timesheet_params)
-        format.html { redirect_to timesheet_url(@timesheet), notice: "Timesheet was successfully updated." }
+        format.html { redirect_to timesheet_url(@timesheet), notice: "O registro de efetivo foi atualizada com sucesso." }
         format.json { render :show, status: :ok, location: @timesheet }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -56,7 +56,7 @@ class TimesheetsController < ApplicationController
     @timesheet.destroy
 
     respond_to do |format|
-      format.html { redirect_to timesheets_url, notice: "Timesheet was successfully destroyed." }
+      format.html { redirect_to timesheets_url, alert: "O registro de efetivo foi apagado com sucesso." }
       format.json { head :no_content }
     end
   end

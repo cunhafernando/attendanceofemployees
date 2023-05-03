@@ -31,9 +31,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_28_183718) do
   end
 
   create_table "line_employees", force: :cascade do |t|
-    t.bigint "employee_id", null: false
-    t.bigint "timesheet_id", null: false
+    t.bigint "employee_id"
+    t.bigint "timesheet_id"
     t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["employee_id"], name: "index_line_employees_on_employee_id"
     t.index ["timesheet_id"], name: "index_line_employees_on_timesheet_id"
   end
@@ -63,7 +65,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_28_183718) do
   end
 
   create_table "timesheets", force: :cascade do |t|
-    t.bigint "sector_id"
+    t.bigint "sector_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false

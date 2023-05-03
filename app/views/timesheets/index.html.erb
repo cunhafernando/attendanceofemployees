@@ -24,7 +24,7 @@
           <% @timesheets.each do |timesheet|  %>
             <tr>
               <td><%= timesheet.sector.name %></td>
-              <td><%= timesheet.created_at.strftime("%d/%m/%Y") %></td>
+              <td><%= timesheet.created_at.strftime("%d/%m/%Y") %> | <%= timesheet.created_at.strftime("%H:%M") %></td>
               <td><%= timesheet.updated_at.strftime("%d/%m/%Y") %></td>
               <td><%= timesheet.updated_at.strftime("%H:%M") %></td>
               <td><%= link_to '', timesheet, class: "btn btn-primary bi bi-eye" %></td>

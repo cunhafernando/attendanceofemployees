@@ -3,7 +3,7 @@ class Timesheet < ApplicationRecord
     has_many :employees, through: :line_employees
     belongs_to :user
     belongs_to :sector
-    validates :sector, presence: true
+    validates_presence_of :sector, message: "Selecione um setor"
     
   
     accepts_nested_attributes_for :line_employees

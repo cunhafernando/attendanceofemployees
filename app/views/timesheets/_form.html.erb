@@ -2,8 +2,8 @@
   <% if timesheet.errors.any? %>
     <div class="container">
       <div class="row">
-        <div class="col alert alert-success alert-dismissible fade show mt-3" role="alert">
-          <strong>Encontramos <%= pluralize(timesheet.errors.count, "error") %> ao salvar o formulário.</strong>
+        <div class="col alert alert-danger alert-dismissible fade show mt-3" role="alert">
+          <strong>Encontramos <%= pluralize(timesheet.errors.count, "erro") %> ao salvar o formulário.</strong>
 
           <ul>
             <% timesheet.errors.each do |error| %>
@@ -32,15 +32,17 @@
               
       <%= form.fields_for :line_employees do |line_employee_form| %>
       <tr>
-          <td><%= line_employee_form.collection_select :employee_id, Employee.all, :id, :full_name, {prompt: "Selecione"}, {class: "form-select"} %></td>
+          </td><td><%= line_employee_form.collection_select :employee_id, Employee.all, :id, :full_name, {prompt: "Selecione"}, {class: "form-select"} %></td>
           <td><%= line_employee_form.select :status, options_for_select([  ["Selecione", ""],  "presenca", "falta", "atestado", "inss", "ferias", "licenca", "atrasado", "vacancia", "antecipada"]), {}, { class: "form-select" } %></td>
       </tr>
       <% end %>
       
+      
     </tbody>
     </table>
+    <div>
+    <%= form.submit 'Salvar', class: 'btn btn-success' %>
   </div>
-  <div>
-    <%= form.submit %>
   </div>
+  
 <% end %>

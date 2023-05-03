@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :timesheets
   get 'register/index'
+  get 'register/index2'
   resources :sectionals
   resources :employees
   resources :offices

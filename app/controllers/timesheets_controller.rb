@@ -69,6 +69,6 @@ class TimesheetsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def timesheet_params
-      params.require(:timesheet).permit(:sector_id, { line_employees_attributes: [:id, :employee_id, :status] })
+      params.require(:timesheet).permit(:sector_id, :statuses, { line_employees_attributes: [:id, :status] }, employee_ids:[])
     end
 end

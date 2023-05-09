@@ -25,24 +25,23 @@
         <tr>
           <th scope="col">Funcionários</th>
           <th scope="col">Status</th>
-          
         </tr>
       </thead>
       <tbody>
-              
-      <%= form.fields_for :line_employees do |line_employee_form| %>
-      <tr>
-          </td><td><%= line_employee_form.collection_select :employee_id, Employee.all, :id, :full_name, {prompt: "Selecione"}, {class: "form-select"} %></td>
-          <td><%= line_employee_form.select :status, options_for_select([  ["Selecione", ""],  "presenca", "falta", "atestado", "inss", "ferias", "licenca", "atrasado", "vacancia", "antecipada"]), {}, { class: "form-select" } %></td>
-      </tr>
-      <% end %>
-      
-      
-    </tbody>
+          <%= form.collection_check_boxes :employee_ids, Employee.all, :id, :full_name do |b| %>
+          <tr>
+            <td><%= b.label(class: "form-check") { b.check_box(class: "form-check-input me-2") + b.text } %></td>
+            <td><%= form.select :status, options_for_select([  ["Selecione", ""],  ["presenca", 0], ["falta", 1], ["atestado", 2], ["inss", 3], ["ferias", 4], ["licenca", 5], ["atrasado", 6], ["vacancia", 7], ["antecipada", 8]]), {}, { class: "form-select" } %></td>
+            <td></td>
+          </tr>
+          <% end %>
+      </tbody>
     </table>
     <div>
     <%= form.submit 'Salvar', class: 'btn btn-success' %>
   </div>
   </div>
+
+  
   
 <% end %>

@@ -28,7 +28,12 @@
         </tr>
       </thead>
       <tbody>
-        
+        <%= form.collection_check_boxes :employee_ids, Employee.all, :id, :full_name do |b| %>
+          <tr>
+            <td><%= b.label(class: "form-check") { b.check_box(class: "form-check-input me-2") + b.text } %></td>
+            <td><%= form.select(:status, LineEmployee.statuses.keys.map {|status| [status.titleize,status]}, {}, { class: "form-select" })  %></td>
+          </tr>
+          <% end %>
         
         <%= form.fields_for :line_employees do |line_employee_form| %>
         <tr>

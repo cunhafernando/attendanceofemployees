@@ -1,297 +1,661 @@
 <div class="modal modal-signin position-fixed d-block bg-white py-5" tabindex="-1" role="dialog" id="modalSignin">
     <div class="rol mt-2 ms-5 me-5">
-        <div class="col-11">
-            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-11">
+                    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active" data-bs-interval="10000">
+                                <div class="col text-center text-dark">
+                                    <h3><strong>Diurno</strong></h3>
+                                </div>
+                                <div class="card mb-3">
+                                    <div class="row g-0">
+                                        <div class="col-md-12">
+                                            <div class="card-body text-start">
+                                                <h4 class="text-dark text-center"><strong>Administrativos Clínicas</strong></h4>
+                                                <div class="d-grid gap-2 d-md-block">
+                                                    <div class="text-dark">
+                                                        <% @line_employees.each do |line_employee|  %>
+                                                            <% if (line_employee.employee.sector.name == "Administrativos Clínicas") && (LineEmployee.where("DATE(created_at) = DATE(?)", Time.now) ) %>
+                                                                <button type="button" class="btn <% if line_employee.status == "presenca" %>
+                                                                    btn-success
+                                                                    <% elsif line_employee.status == "falta" %>
+                                                                    btn-danger
+                                                                    <% elsif line_employee.status == "atrasado" %>
+                                                                    btn-warning
+                                                                    <% elsif line_employee.status == "atestado" %>
+                                                                    btn-dark
+                                                                    <% elsif line_employee.status == "inss" %>
+                                                                    btn-primary
+                                                                    <% elsif line_employee.status == "ferias" %>
+                                                                    btn-info
+                                                                    <% elsif line_employee.status == "licenca" %>
+                                                                    btn-secondary
+                                                                    <% elsif line_employee.status == "vacancia" %>
+                                                                    btn-purple
+                                                                    <% else %>
+                                                                    btn-orange
+                                                                    <% end %>btn-sm mb-1"><%= line_employee.employee.full_name %> | <%= line_employee.employee.sectional.name %></button>
+                                                            <% end %>
+                                                         <% end %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card mb-3">
+                                    <div class="row g-0">
+                                        <div class="col-md-12">
+                                            <div class="card-body text-start">
+                                                <h4 class="text-dark text-center"><strong>Administrativos Emergência</strong></h4>
+                                                <div class="d-grid gap-2 d-md-block">
+                                                    <div class="text-dark">
+                                                        <% @line_employees.each do |line_employee|  %>
+                                                            <% if (line_employee.employee.sector.name == "Administrativos Emergência") && (LineEmployee.where("DATE(created_at) = DATE(?)", Time.now) ) %>
+                                                                <button type="button" class="btn <% if line_employee.status == "presenca" %>
+                                                                    btn-success
+                                                                    <% elsif line_employee.status == "falta" %>
+                                                                    btn-danger
+                                                                    <% elsif line_employee.status == "atrasado" %>
+                                                                    btn-warning
+                                                                    <% elsif line_employee.status == "atestado" %>
+                                                                    btn-dark
+                                                                    <% elsif line_employee.status == "inss" %>
+                                                                    btn-primary
+                                                                    <% elsif line_employee.status == "ferias" %>
+                                                                    btn-info
+                                                                    <% elsif line_employee.status == "licenca" %>
+                                                                    btn-secondary
+                                                                    <% elsif line_employee.status == "vacancia" %>
+                                                                    btn-purple
+                                                                    <% else %>
+                                                                    btn-orange
+                                                                    <% end %>btn-sm mb-1"><%= line_employee.employee.full_name %> | <%= line_employee.employee.sectional.name %></button>
+                                                            <% end %>
+                                                         <% end %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card mb-3">
+                                    <div class="row g-0">
+                                        <div class="col-md-12">
+                                            <div class="card-body text-start">
+                                                <h4 class="text-dark text-center"><strong>Agente de Portaria</strong></h4>
+                                                <div class="d-grid gap-2 d-md-block">
+                                                    <div class="text-dark">
+                                                        <% @line_employees.each do |line_employee|  %>
+                                                            <% if (line_employee.employee.sector.name == "Agente de Portaria") && (LineEmployee.where("DATE(created_at) = DATE(?)", Time.now) ) %>
+                                                                <button type="button" class="btn <% if line_employee.status == "presenca" %>
+                                                                    btn-success
+                                                                    <% elsif line_employee.status == "falta" %>
+                                                                    btn-danger
+                                                                    <% elsif line_employee.status == "atrasado" %>
+                                                                    btn-warning
+                                                                    <% elsif line_employee.status == "atestado" %>
+                                                                    btn-dark
+                                                                    <% elsif line_employee.status == "inss" %>
+                                                                    btn-primary
+                                                                    <% elsif line_employee.status == "ferias" %>
+                                                                    btn-info
+                                                                    <% elsif line_employee.status == "licenca" %>
+                                                                    btn-secondary
+                                                                    <% elsif line_employee.status == "vacancia" %>
+                                                                    btn-purple
+                                                                    <% else %>
+                                                                    btn-orange
+                                                                    <% end %>btn-sm mb-1"><%= line_employee.employee.full_name %> | <%= line_employee.employee.sectional.name %></button>
+                                                            <% end %>
+                                                         <% end %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item" data-bs-interval="10000">
+                                <div class="col text-center text-dark">
+                                    <h3><strong>Diurno</strong></h3>
+                                </div>
+                                <div class="card mb-3">
+                                    <div class="row g-0">
+                                        <div class="col-md-12">
+                                            <div class="card-body text-start">
+                                                <h4 class="text-dark text-center"><strong>Arrecadação</strong></h4>
+                                                <div class="d-grid gap-2 d-md-block">
+                                                    <div class="text-dark">
+                                                        <% @line_employees.each do |line_employee|  %>
+                                                            <% if (line_employee.employee.sector.name == "Arrecadação") && (LineEmployee.where("DATE(created_at) = DATE(?)", Time.now) ) %>
+                                                                <button type="button" class="btn <% if line_employee.status == "presenca" %>
+                                                                    btn-success
+                                                                    <% elsif line_employee.status == "falta" %>
+                                                                    btn-danger
+                                                                    <% elsif line_employee.status == "atrasado" %>
+                                                                    btn-warning
+                                                                    <% elsif line_employee.status == "atestado" %>
+                                                                    btn-dark
+                                                                    <% elsif line_employee.status == "inss" %>
+                                                                    btn-primary
+                                                                    <% elsif line_employee.status == "ferias" %>
+                                                                    btn-info
+                                                                    <% elsif line_employee.status == "licenca" %>
+                                                                    btn-secondary
+                                                                    <% elsif line_employee.status == "vacancia" %>
+                                                                    btn-purple
+                                                                    <% else %>
+                                                                    btn-orange
+                                                                    <% end %>btn-sm mb-1"><%= line_employee.employee.full_name %> | <%= line_employee.employee.sectional.name %></button>
+                                                            <% end %>
+                                                         <% end %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card mb-3">
+                                    <div class="row g-0">
+                                        <div class="col-md-12">
+                                            <div class="card-body text-start">
+                                                <h4 class="text-dark text-center"><strong>Documentação Médica</strong></h4>
+                                                <div class="d-grid gap-2 d-md-block">
+                                                    <div class="text-dark">
+                                                        <% @line_employees.each do |line_employee|  %>
+                                                            <% if (line_employee.employee.sector.name == "Documentação Médica") && (LineEmployee.where("DATE(created_at) = DATE(?)", Time.now) ) %>
+                                                                <button type="button" class="btn <% if line_employee.status == "presenca" %>
+                                                                    btn-success
+                                                                    <% elsif line_employee.status == "falta" %>
+                                                                    btn-danger
+                                                                    <% elsif line_employee.status == "atrasado" %>
+                                                                    btn-warning
+                                                                    <% elsif line_employee.status == "atestado" %>
+                                                                    btn-dark
+                                                                    <% elsif line_employee.status == "inss" %>
+                                                                    btn-primary
+                                                                    <% elsif line_employee.status == "ferias" %>
+                                                                    btn-info
+                                                                    <% elsif line_employee.status == "licenca" %>
+                                                                    btn-secondary
+                                                                    <% elsif line_employee.status == "vacancia" %>
+                                                                    btn-purple
+                                                                    <% else %>
+                                                                    btn-orange
+                                                                    <% end %>btn-sm mb-1"><%= line_employee.employee.full_name %> | <%= line_employee.employee.sectional.name %></button>
+                                                            <% end %>
+                                                         <% end %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item" data-bs-interval="10000">
+                                <div class="col text-center text-dark">
+                                    <h3><strong>Diurno</strong></h3>
+                                </div>
+                                <div class="card mb-3">
+                                    <div class="row g-0">
+                                        <div class="col-md-12">
+                                            <div class="card-body text-start">
+                                                <h4 class="text-dark text-center"><strong>Faturamento</strong></h4>
+                                                <div class="d-grid gap-2 d-md-block">
+                                                    <div class="text-dark">
+                                                        <% @line_employees.each do |line_employee|  %>
+                                                            <% if (line_employee.employee.sector.name == "Faturamento") && (LineEmployee.where("created_at >= ?", Time.zone.now.beginning_of_day) ) %>
+                                                                <button type="button" class="btn <% if line_employee.status == "presenca" %>
+                                                                    btn-success
+                                                                    <% elsif line_employee.status == "falta" %>
+                                                                    btn-danger
+                                                                    <% elsif line_employee.status == "atrasado" %>
+                                                                    btn-warning
+                                                                    <% elsif line_employee.status == "atestado" %>
+                                                                    btn-dark
+                                                                    <% elsif line_employee.status == "inss" %>
+                                                                    btn-primary
+                                                                    <% elsif line_employee.status == "ferias" %>
+                                                                    btn-info
+                                                                    <% elsif line_employee.status == "licenca" %>
+                                                                    btn-secondary
+                                                                    <% elsif line_employee.status == "vacancia" %>
+                                                                    btn-purple
+                                                                    <% else %>
+                                                                    btn-orange
+                                                                    <% end %>btn-sm mb-1"><%= line_employee.employee.full_name %> | <%= line_employee.employee.sectional.name %></button>
+                                                            <% end %>
+                                                         <% end %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card mb-3">
+                                    <div class="row g-0">
+                                        <div class="col-md-12">
+                                            <div class="card-body text-start">
+                                                <h4 class="text-dark text-center"><strong>Maqueiro</strong></h4>
+                                                <div class="d-grid gap-2 d-md-block">
+                                                    <div class="text-dark">
+                                                        <% @line_employees.each do |line_employee|  %>
+                                                            <% if (line_employee.employee.sector.name == "Maqueiro") && (LineEmployee.where("DATE(created_at) = DATE(?)", Time.now) ) %>
+                                                                <button type="button" class="btn <% if line_employee.status == "presenca" %>
+                                                                    btn-success
+                                                                    <% elsif line_employee.status == "falta" %>
+                                                                    btn-danger
+                                                                    <% elsif line_employee.status == "atrasado" %>
+                                                                    btn-warning
+                                                                    <% elsif line_employee.status == "atestado" %>
+                                                                    btn-dark
+                                                                    <% elsif line_employee.status == "inss" %>
+                                                                    btn-primary
+                                                                    <% elsif line_employee.status == "ferias" %>
+                                                                    btn-info
+                                                                    <% elsif line_employee.status == "licenca" %>
+                                                                    btn-secondary
+                                                                    <% elsif line_employee.status == "vacancia" %>
+                                                                    btn-purple
+                                                                    <% else %>
+                                                                    btn-orange
+                                                                    <% end %>btn-sm mb-1"><%= line_employee.employee.full_name %> | <%= line_employee.employee.sectional.name %></button>
+                                                            <% end %>
+                                                         <% end %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card mb-3">
+                                    <div class="row g-0">
+                                        <div class="col-md-12">
+                                            <div class="card-body text-start">
+                                                <h4 class="text-dark text-center"><strong>Morgue</strong></h4>
+                                                <div class="d-grid gap-2 d-md-block">
+                                                    <div class="text-dark">
+                                                        <% @line_employees.each do |line_employee|  %>
+                                                            <% if (line_employee.employee.sector.name == "Morgue") && (LineEmployee.where("DATE(created_at) = DATE(?)", Time.now) ) %>
+                                                                <button type="button" class="btn <% if line_employee.status == "presenca" %>
+                                                                    btn-success
+                                                                    <% elsif line_employee.status == "falta" %>
+                                                                    btn-danger
+                                                                    <% elsif line_employee.status == "atrasado" %>
+                                                                    btn-warning
+                                                                    <% elsif line_employee.status == "atestado" %>
+                                                                    btn-dark
+                                                                    <% elsif line_employee.status == "inss" %>
+                                                                    btn-primary
+                                                                    <% elsif line_employee.status == "ferias" %>
+                                                                    btn-info
+                                                                    <% elsif line_employee.status == "licenca" %>
+                                                                    btn-secondary
+                                                                    <% elsif line_employee.status == "vacancia" %>
+                                                                    btn-purple
+                                                                    <% else %>
+                                                                    btn-orange
+                                                                    <% end %>btn-sm mb-1"><%= line_employee.employee.full_name %> | <%= line_employee.employee.sectional.name %></button>
+                                                            <% end %>
+                                                         <% end %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item" data-bs-interval="10000">
+                                <div class="col text-center text-dark">
+                                    <h3><strong>Diurno</strong></h3>
+                                </div>
+                                <div class="card mb-3">
+                                    <div class="row g-0">
+                                        <div class="col-md-12">
+                                            <div class="card-body text-start">
+                                                <h4 class="text-dark text-center"><strong>Patrimonio</strong></h4>
+                                                <div class="d-grid gap-2 d-md-block">
+                                                    <div class="text-dark">
+                                                        <% @line_employees.each do |line_employee|  %>
+                                                            <% if (line_employee.employee.sector.name == "Patrimonio") && (LineEmployee.where("DATE(created_at) = DATE(?)", Time.now) ) %>
+                                                                <button type="button" class="btn <% if line_employee.status == "presenca" %>
+                                                                    btn-success
+                                                                    <% elsif line_employee.status == "falta" %>
+                                                                    btn-danger
+                                                                    <% elsif line_employee.status == "atrasado" %>
+                                                                    btn-warning
+                                                                    <% elsif line_employee.status == "atestado" %>
+                                                                    btn-dark
+                                                                    <% elsif line_employee.status == "inss" %>
+                                                                    btn-primary
+                                                                    <% elsif line_employee.status == "ferias" %>
+                                                                    btn-info
+                                                                    <% elsif line_employee.status == "licenca" %>
+                                                                    btn-secondary
+                                                                    <% elsif line_employee.status == "vacancia" %>
+                                                                    btn-purple
+                                                                    <% else %>
+                                                                    btn-orange
+                                                                    <% end %>btn-sm mb-1"><%= line_employee.employee.full_name %> | <%= line_employee.employee.sectional.name %></button>
+                                                            <% end %>
+                                                         <% end %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card mb-3">
+                                    <div class="row g-0">
+                                        <div class="col-md-12">
+                                            <div class="card-body text-start">
+                                                <h4 class="text-dark text-center"><strong>Recepções</strong></h4>
+                                                <div class="d-grid gap-2 d-md-block">
+                                                    <div class="text-dark">
+                                                        <% @line_employees.each do |line_employee|  %>
+                                                            <% if (line_employee.employee.sector.name == "Recepções") && (LineEmployee.where("DATE(created_at) = DATE(?)", Time.now) ) %>
+                                                                <button type="button" class="btn <% if line_employee.status == "presenca" %>
+                                                                    btn-success
+                                                                    <% elsif line_employee.status == "falta" %>
+                                                                    btn-danger
+                                                                    <% elsif line_employee.status == "atrasado" %>
+                                                                    btn-warning
+                                                                    <% elsif line_employee.status == "atestado" %>
+                                                                    btn-dark
+                                                                    <% elsif line_employee.status == "inss" %>
+                                                                    btn-primary
+                                                                    <% elsif line_employee.status == "ferias" %>
+                                                                    btn-info
+                                                                    <% elsif line_employee.status == "licenca" %>
+                                                                    btn-secondary
+                                                                    <% elsif line_employee.status == "vacancia" %>
+                                                                    btn-purple
+                                                                    <% else %>
+                                                                    btn-orange
+                                                                    <% end %>btn-sm mb-1"><%= line_employee.employee.full_name %> | <%= line_employee.employee.sectional.name %></button>
+                                                            <% end %>
+                                                         <% end %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card mb-3">
+                                    <div class="row g-0">
+                                        <div class="col-md-12">
+                                            <div class="card-body text-start">
+                                                <h4 class="text-dark text-center"><strong>Administrativos Clínicas</strong></h4>
+                                                <div class="d-grid gap-2 d-md-block">
+                                                    <div class="text-dark">
+                                                        <% @line_employees.each do |line_employee|  %>
+                                                            <% if (line_employee.employee.sector.name == "Administrativos Clínicas") && (LineEmployee.where("DATE(created_at) = DATE(?)", Time.now) ) %>
+                                                                <button type="button" class="btn <% if line_employee.status == "presenca" %>
+                                                                    btn-success
+                                                                    <% elsif line_employee.status == "falta" %>
+                                                                    btn-danger
+                                                                    <% elsif line_employee.status == "atrasado" %>
+                                                                    btn-warning
+                                                                    <% elsif line_employee.status == "atestado" %>
+                                                                    btn-dark
+                                                                    <% elsif line_employee.status == "inss" %>
+                                                                    btn-primary
+                                                                    <% elsif line_employee.status == "ferias" %>
+                                                                    btn-info
+                                                                    <% elsif line_employee.status == "licenca" %>
+                                                                    btn-secondary
+                                                                    <% elsif line_employee.status == "vacancia" %>
+                                                                    btn-purple
+                                                                    <% else %>
+                                                                    btn-orange
+                                                                    <% end %>btn-sm mb-1"><%= line_employee.employee.full_name %> | <%= line_employee.employee.sectional.name %></button>
+                                                            <% end %>
+                                                         <% end %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card mb-3">
+                                    <div class="row g-0">
+                                        <div class="col-md-12">
+                                            <div class="card-body text-start">
+                                                <h4 class="text-dark text-center"><strong>Administrativos Emergência</strong></h4>
+                                                <div class="d-grid gap-2 d-md-block">
+                                                    <div class="text-dark">
+                                                        <% @line_employees.each do |line_employee|  %>
+                                                            <% if (line_employee.employee.sector.name == "Administrativos Emergência") && (LineEmployee.where("DATE(created_at) = DATE(?)", Time.now) ) %>
+                                                                <button type="button" class="btn <% if line_employee.status == "presenca" %>
+                                                                    btn-success
+                                                                    <% elsif line_employee.status == "falta" %>
+                                                                    btn-danger
+                                                                    <% elsif line_employee.status == "atrasado" %>
+                                                                    btn-warning
+                                                                    <% elsif line_employee.status == "atestado" %>
+                                                                    btn-dark
+                                                                    <% elsif line_employee.status == "inss" %>
+                                                                    btn-primary
+                                                                    <% elsif line_employee.status == "ferias" %>
+                                                                    btn-info
+                                                                    <% elsif line_employee.status == "licenca" %>
+                                                                    btn-secondary
+                                                                    <% elsif line_employee.status == "vacancia" %>
+                                                                    btn-purple
+                                                                    <% else %>
+                                                                    btn-orange
+                                                                    <% end %>btn-sm mb-1"><%= line_employee.employee.full_name %> | <%= line_employee.employee.sectional.name %></button>
+                                                            <% end %>
+                                                         <% end %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item" data-bs-interval="10000">
+                                <div class="col text-center text-dark">
+                                    <h3><strong>Diurno</strong></h3>
+                                </div>
+                                <div class="card mb-3">
+                                    <div class="row g-0">
+                                        <div class="col-md-12">
+                                            <div class="card-body text-start">
+                                                <h4 class="text-dark text-center"><strong>TI</strong></h4>
+                                                <div class="d-grid gap-2 d-md-block">
+                                                    <div class="text-dark">
+                                                        <% @line_employees.each do |line_employee|  %>
+                                                            <% if (line_employee.employee.sector.name == "TI") && (LineEmployee.where("DATE(created_at) = DATE(?)", Time.now) ) %>
+                                                                <button type="button" class="btn <% if line_employee.status == "presenca" %>
+                                                                    btn-success
+                                                                    <% elsif line_employee.status == "falta" %>
+                                                                    btn-danger
+                                                                    <% elsif line_employee.status == "atrasado" %>
+                                                                    btn-warning
+                                                                    <% elsif line_employee.status == "atestado" %>
+                                                                    btn-dark
+                                                                    <% elsif line_employee.status == "inss" %>
+                                                                    btn-primary
+                                                                    <% elsif line_employee.status == "ferias" %>
+                                                                    btn-info
+                                                                    <% elsif line_employee.status == "licenca" %>
+                                                                    btn-secondary
+                                                                    <% elsif line_employee.status == "vacancia" %>
+                                                                    btn-purple
+                                                                    <% else %>
+                                                                    btn-orange
+                                                                    <% end %>btn-sm mb-1"><%= line_employee.employee.full_name %> | <%= line_employee.employee.sectional.name %></button>
+                                                            <% end %>
+                                                         <% end %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card mb-3">
+                                    <div class="row g-0">
+                                        <div class="col-md-12">
+                                            <div class="card-body text-start">
+                                                <h4 class="text-dark text-center"><strong>SESMT</strong></h4>
+                                                <div class="d-grid gap-2 d-md-block">
+                                                    <div class="text-dark">
+                                                        <% @line_employees.each do |line_employee|  %>
+                                                            <% if (line_employee.employee.sector.name == "SESMT") && (LineEmployee.where("DATE(created_at) = DATE(?)", Time.now) ) %>
+                                                                <button type="button" class="btn <% if line_employee.status == "presenca" %>
+                                                                    btn-success
+                                                                    <% elsif line_employee.status == "falta" %>
+                                                                    btn-danger
+                                                                    <% elsif line_employee.status == "atrasado" %>
+                                                                    btn-warning
+                                                                    <% elsif line_employee.status == "atestado" %>
+                                                                    btn-dark
+                                                                    <% elsif line_employee.status == "inss" %>
+                                                                    btn-primary
+                                                                    <% elsif line_employee.status == "ferias" %>
+                                                                    btn-info
+                                                                    <% elsif line_employee.status == "licenca" %>
+                                                                    btn-secondary
+                                                                    <% elsif line_employee.status == "vacancia" %>
+                                                                    btn-purple
+                                                                    <% else %>
+                                                                    btn-orange
+                                                                    <% end %>btn-sm mb-1"><%= line_employee.employee.full_name %> | <%= line_employee.employee.sectional.name %></button>
+                                                            <% end %>
+                                                         <% end %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card mb-3">
+                                    <div class="row g-0">
+                                        <div class="col-md-12">
+                                            <div class="card-body text-start">
+                                                <h4 class="text-dark text-center"><strong>SHL</strong></h4>
+                                                <div class="d-grid gap-2 d-md-block">
+                                                    <div class="text-dark">
+                                                        <% @line_employees.each do |line_employee|  %>
+                                                            <% if (line_employee.employee.sector.name == "SHL") && (LineEmployee.where("DATE(created_at) = DATE(?)", Time.now) ) %>
+                                                                <button type="button" class="btn <% if line_employee.status == "presenca" %>
+                                                                    btn-success
+                                                                    <% elsif line_employee.status == "falta" %>
+                                                                    btn-danger
+                                                                    <% elsif line_employee.status == "atrasado" %>
+                                                                    btn-warning
+                                                                    <% elsif line_employee.status == "atestado" %>
+                                                                    btn-dark
+                                                                    <% elsif line_employee.status == "inss" %>
+                                                                    btn-primary
+                                                                    <% elsif line_employee.status == "ferias" %>
+                                                                    btn-info
+                                                                    <% elsif line_employee.status == "licenca" %>
+                                                                    btn-secondary
+                                                                    <% elsif line_employee.status == "vacancia" %>
+                                                                    btn-purple
+                                                                    <% else %>
+                                                                    btn-orange
+                                                                    <% end %>btn-sm mb-1"><%= line_employee.employee.full_name %> | <%= line_employee.employee.sectional.name %></button>
+                                                            <% end %>
+                                                         <% end %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card mb-3">
+                                    <div class="row g-0">
+                                        <div class="col-md-12">
+                                            <div class="card-body text-start">
+                                                <h4 class="text-dark text-center"><strong>Rouparia</strong></h4>
+                                                <div class="d-grid gap-2 d-md-block">
+                                                    <div class="text-dark">
+                                                        <% @line_employees.each do |line_employee|  %>
+                                                            <% if (line_employee.employee.sector.name == "Rouparia") && (LineEmployee.where("DATE(created_at) = DATE(?)", Time.now) ) %>
+                                                                <button type="button" class="btn <% if line_employee.status == "presenca" %>
+                                                                    btn-success
+                                                                    <% elsif line_employee.status == "falta" %>
+                                                                    btn-danger
+                                                                    <% elsif line_employee.status == "atrasado" %>
+                                                                    btn-warning
+                                                                    <% elsif line_employee.status == "atestado" %>
+                                                                    btn-dark
+                                                                    <% elsif line_employee.status == "inss" %>
+                                                                    btn-primary
+                                                                    <% elsif line_employee.status == "ferias" %>
+                                                                    btn-info
+                                                                    <% elsif line_employee.status == "licenca" %>
+                                                                    btn-secondary
+                                                                    <% elsif line_employee.status == "vacancia" %>
+                                                                    btn-purple
+                                                                    <% else %>
+                                                                    btn-orange
+                                                                    <% end %>btn-sm mb-1"><%= line_employee.employee.full_name %> | <%= line_employee.employee.sectional.name %></button>
+                                                            <% end %>
+                                                         <% end %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
                 </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active" data-bs-interval="5000">
-                        <div class="card mb-3">
-                            <div class="row g-0">
-                                <div class="col-md-1 align-self-center">
-                                    <h6 class="text-dark text-center">TI</h6>
-                                </div>
-                                <div class="col-md-11">
-                                    <div class="card-body">
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Raphael Aversa | TI</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Hudson Rocha | TI</button>
-                                        <button type="button" class="btn btn-danger btn-sm mb-1">Marcelo Junior | TI</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Orlando Junior | TI</button>
-                                        <button type="button" class="btn btn-secondary btn-sm mb-1">Ricardo Coelho | TI</button>
-                                        <button type="button" class="btn btn-info btn-sm mb-1">Fernando Cunha | TI</button>
-                                        <button type="button" class="btn btn-warning btn-sm mb-1">Luiz Nascimento | TI</button>
-                                        <button type="button" class="btn btn-dark btn-sm mb-1">Matheus Peres | TI</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Leony Coelho | TI</button>
-                                        <button type="button" class="btn btn-primary btn-sm mb-1">Renato Arantes | TI</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card mb-3">
-                            <div class="row g-0">
-                                <div class="col-md-1 align-self-center">
-                                    <h6 class="text-dark text-center">SHL</h6>
-                                </div>
-                                <div class="col-md-11">
-                                    <div class="card-body">
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Coordenador de Hotelaria</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Assistente Administrativo Diarista</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Encarregada Diarista</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Encarregada Plant. Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Encarregada Plant. Noite</button>
-                                        <button type="button" class="btn btn-primary btn-sm mb-1">Aux. Serv. Ger. Plant. Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Dia</button>
-                                        <button type="button" class="btn btn-dark btn-sm mb-1">Aux. Serv. Ger. Plant. Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Dia</button>
-                                        <button type="button" class="btn btn-info btn-sm mb-1">Aux. Serv. Ger. Plant. Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Dia</button>
-                                        <button type="button" class="btn btn-warning btn-sm mb-1">Aux. Serv. Ger. Plant. Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Dia</button>
-                                        <button type="button" class="btn btn-secondary btn-sm mb-1">Aux. Serv. Ger. Plant. Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Dia</button>
-                                        <button type="button" class="btn btn-danger btn-sm mb-1">Aux. Serv. Ger. Plant. Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Noite</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Noite</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Noite</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Noite</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Noite</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Noite</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Noite</button>
-                                        <button type="button" class="btn btn-danger btn-sm mb-1">Aux. Serv. Ger. Plant. Noite</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Noite</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Noite</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Noite</button>
-                                        <button type="button" class="btn btn-warning btn-sm mb-1">Aux. Serv. Ger. Plant. Noite</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Noite</button>
-                                        <button type="button" class="btn btn-warning btn-sm mb-1">Aux. Serv. Ger. Plant. Noite</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Noite</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Serv. Ger. Plant. Noite</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item" data-bs-interval="5000">
-                        <div class="card mb-3">
-                            <div class="row g-0">
-                                <div class="col-md-1 align-self-center">
-                                    <h6 class="text-dark text-center">Rouparia</h6>
-                                </div>
-                                <div class="col-md-11">
-                                    <div class="card-body">
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Encarregado Diarista</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Lavanderia Diarista</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Lavanderia Plantonista Dia</button>
-                                        <button type="button" class="btn btn-danger btn-sm mb-1">Aux. Lavanderia Plantonista Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Lavanderia Plantonista Dia</button>
-                                        <button type="button" class="btn btn-warning btn-sm mb-1">Aux. Lavanderia Plantonista Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Lavanderia Plantonista Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Lavanderia Plantonista Noite</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Lavanderia Plantonista Noite</button>
-                                        <button type="button" class="btn btn-dark btn-sm mb-1">Aux. Lavanderia Plantonista Noite</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Aux. Lavanderia Plantonista Noite</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card mb-3">
-                            <div class="row g-0">
-                                <div class="col-md-1 align-self-center">
-                                    <h6 class="text-dark text-center">Maqueiro</h6>
-                                </div>
-                                <div class="col-md-11">
-                                    <div class="card-body">
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Supervisor Administrativo</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Maqueiro Dia</button>
-                                        <button type="button" class="btn btn-purple btn-sm mb-1">Maqueiro Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Maqueiro Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Maqueiro Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Maqueiro Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Maqueiro Dia</button>
-                                        <button type="button" class="btn btn-danger btn-sm mb-1">Maqueiro Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Maqueiro Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Maqueiro Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Maqueiro Dia</button>
-                                        <button type="button" class="btn btn-warning btn-sm mb-1">Maqueiro Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Maqueiro Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Maqueiro Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Maqueiro Noite</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Maqueiro Noite</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Maqueiro Noite</button>
-                                        <button type="button" class="btn btn-primary btn-sm mb-1">Maqueiro Noite</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Maqueiro Noite</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Maqueiro Noite</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Maqueiro Noite</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card mb-3">
-                            <div class="row g-0">
-                                <div class="col-md-1 align-self-center">
-                                    <h6 class="text-dark text-center">Agente de Portaria</h6>
-                                </div>
-                                <div class="col-md-11">
-                                    <div class="card-body">
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Supervisor Administrativo</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Controlador de Acesso Diarista</button>
-                                        <button type="button" class="btn btn-warning btn-sm mb-1">Controlador de Acesso Plantonista Dia</button>
-                                        <button type="button" class="btn btn-primary btn-sm mb-1">Controlador de Acesso Plantonista Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Controlador de Acesso Plantonista Dia</button>
-                                        <button type="button" class="btn btn-warning btn-sm mb-1">Controlador de Acesso Plantonista Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Controlador de Acesso Plantonista Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Controlador de Acesso Plantonista Dia</button>
-                                        <button type="button" class="btn btn-danger btn-sm mb-1">Controlador de Acesso Plantonista Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Controlador de Acesso Plantonista Norturno</button>
-                                        <button type="button" class="btn btn-danger btn-sm mb-1">Controlador de Acesso Plantonista Norturno</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Controlador de Acesso Plantonista Norturno</button>
-                                        <button type="button" class="btn btn-warning btn-sm mb-1">Controlador de Acesso Plantonista Norturno</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Controlador de Acesso Plantonista Norturno</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Controlador de Acesso Plantonista Norturno</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="card mb-3">
-                            <div class="row g-0">
-                                <div class="col-md-1 align-self-center">
-                                    <h6 class="text-dark text-center">Recepção</h6>
-                                </div>
-                                <div class="col-md-11">
-                                    <div class="card-body">
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Supervisor Administrativo</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Assistente Administrativo Diarista</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Auxiliar Administrativo Diarista</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Auxiliar Administrativo Diarista</button>
-                                        <button type="button" class="btn btn-warning btn-sm mb-1">Auxiliar Administrativo Diarista</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Auxiliar Administrativo Diarista</button>
-                                        <button type="button" class="btn btn-warning btn-sm mb-1">Assistente Administrativo Plantonista Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Auxiliar Administrativo Plantonista Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Auxiliar Administrativo Plantonista Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Auxiliar Administrativo Plantonista Dia</button>
-                                        <button type="button" class="btn btn-warning btn-sm mb-1">Auxiliar Administrativo Plantonista Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Auxiliar Administrativo Plantonista Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Auxiliar Administrativo Plantonista Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Auxiliar Administrativo Plantonista Dia</button>
-                                        <button type="button" class="btn btn-info btn-sm mb-1">Assistente Administrativo Plantonista Noite</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Auxiliar Administrativo Plantonista Noite</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Auxiliar Administrativo Plantonista Noite</button>
-                                        <button type="button" class="btn btn-info btn-sm mb-1">Auxiliar Administrativo Plantonista Noite</button>
-                                        <button type="button" class="btn btn-primary btn-sm mb-1">Auxiliar Administrativo Plantonista Noite</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card mb-3">
-                            <div class="row g-0">
-                                <div class="col-md-1 align-self-center">
-                                    <h6 class="text-dark text-center">Clínicas</h6>
-                                </div>
-                                <div class="col-md-11">
-                                    <div class="card-body">
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Assistente Administrativo Diarista</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Auxiliar Administrativo Diarista</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Auxiliar Administrativo Diarista</button>
-                                        <button type="button" class="btn btn-warning btn-sm mb-1">Auxiliar Administrativo Diarista</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Auxiliar Administrativo Diarista</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Auxiliar Administrativo Diarista</button>
-                                        <button type="button" class="btn btn-warning btn-sm mb-1">Auxiliar Administrativo Diarista</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Auxiliar Administrativo Diarista</button>
-                                        <button type="button" class="btn btn-dark btn-sm mb-1">Auxiliar Administrativo Plantonista Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Auxiliar Administrativo Plantonista Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Auxiliar Administrativo Plantonista Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Auxiliar Administrativo Plantonista Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Auxiliar Administrativo Plantonista Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Auxiliar Administrativo Plantonista Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Auxiliar Administrativo Plantonista Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Auxiliar Administrativo Plantonista Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Auxiliar Administrativo Plantonista Dia</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Auxiliar Administrativo Plantonista Noite</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="card mb-3">
-                            <div class="row g-0">
-                                <div class="col-md-1 align-self-center">
-                                    <h6 class="text-dark text-center">Emergência</h6>
-                                </div>
-                                <div class="col-md-11">
-                                    <div class="card-body">
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Supervisor ADM</button>
-                                        <button type="button" class="btn btn-warning btn-sm mb-1">Auxiliar Administrativo Diarista</button>
-                                        <button type="button" class="btn btn-danger btn-sm mb-1">Auxiliar Administrativo Plantonista Dia 1</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Auxiliar Administrativo Plantonista Dia 2</button>
-                                        <button type="button" class="btn btn-primary btn-sm mb-1">Auxiliar Administrativo Plantonista Dia 3</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Auxiliar Administrativo Plantonista Dia 4</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Auxiliar Administrativo Plantonista Dia 5</button>
-                                        <button type="button" class="btn btn-warning btn-sm mb-1">Auxiliar Administrativo Plantonista Noite 1</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Auxiliar Administrativo Plantonista Noite 2</button>
-                                        <button type="button" class="btn btn-info btn-sm mb-1">Auxiliar Administrativo Plantonista Noite 3</button>
-                                        <button type="button" class="btn btn-success btn-sm mb-1">Auxiliar Administrativo Plantonista Noite 4</button>
-                                        <button type="button" class="btn btn-secondary btn-sm mb-1">Auxiliar Administrativo Plantonista Noite 5</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="col-1">
+                    <div class="d-grid gap-2">
+                        <button type="button" class="btn btn-success btn-sm mb-1"><strong>Presença</strong><br><%= @presenca_count %></button>
+                        <button type="button" class="btn btn-danger btn-sm mb-1"><strong>Falta</strong><br><%= @falta_count %></button>
+                        <button type="button" class="btn btn-warning btn-sm mb-1"><strong>Atraso</strong><br><%= @atrasado_count %></button>
+                        <button type="button" class="btn btn-dark btn-sm mb-1"><strong>Atestado</strong><br><%= @atestado_count %></button>
+                        <button type="button" class="btn btn-primary btn-sm mb-1"><strong>INSS</strong><br><%= @inss_count %></button>
+                        <button type="button" class="btn btn-info btn-sm mb-1"><strong>Férias</strong><br><%= @ferias_count %></button>
+                        <button type="button" class="btn btn-secondary btn-sm mb-1"><strong>Licença</strong><br><%= @licenca_count %></button>
+                        <button type="button" class="btn btn-purple btn-sm mb-1"><strong>Vacância</strong><br><%= @vacancia_count %></button>
+                        <button type="button" class="btn btn-orange btn-sm mb-1"><strong>Antecipada</strong><br><%= @antecipada_count %></button>
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+                <!--<form>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Legenda</label>
+                        
+                        <div id="emailHelp" class="form-text">
+                            <button type="button" class="btn btn-success btn-sm mb-1">Presença</button>
+                            <button type="button" class="btn btn-danger btn-sm mb-1">Falta</button>
+                            <button type="button" class="btn btn-warning btn-sm mb-1">Atraso</button>
+                            <button type="button" class="btn btn-dark btn-sm mb-1">Atestado</button>
+                            <button type="button" class="btn btn-primary btn-sm mb-1">INSS</button>
+                            <button type="button" class="btn btn-info btn-sm mb-1">Férias</button>
+                            <button type="button" class="btn btn-secondary btn-sm mb-1">Licença</button>
+                            <button type="button" class="btn btn-purple btn-sm mb-1">Vacância</button>
+                            <button type="button" class="btn btn-orange btn-sm mb-1">Saída Antecipada</button>
+                        </div>
+                    </div>
+                </form>-->
             </div>
-
-            <form>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Legenda</label>
-                    
-                    <div id="emailHelp" class="form-text">
-                        <button type="button" class="btn btn-success btn-sm mb-1">Presença</button>
-                        <button type="button" class="btn btn-danger btn-sm mb-1">Falta</button>
-                        <button type="button" class="btn btn-warning btn-sm mb-1">Atraso</button>
-                        <button type="button" class="btn btn-dark btn-sm mb-1">Atestado</button>
-                        <button type="button" class="btn btn-primary btn-sm mb-1">INSS</button>
-                        <button type="button" class="btn btn-info btn-sm mb-1">Férias</button>
-                        <button type="button" class="btn btn-secondary btn-sm mb-1">Licença</button>
-                        <button type="button" class="btn btn-purple btn-sm mb-1">Vacância</button>
-                        <button type="button" class="btn btn-orange btn-sm mb-1">Saída Antecipada</button>
-                    </div>
-                </div>
-            </form>
         </div>
+        
     </div>
 </div>

@@ -6,5 +6,5 @@ class Timesheet < ApplicationRecord
     validates_presence_of :sector, message: "Selecione um setor"
     
   
-    accepts_nested_attributes_for :line_employees
+    accepts_nested_attributes_for :line_employees, allow_destroy: true
   end

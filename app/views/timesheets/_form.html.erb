@@ -28,18 +28,13 @@
         </tr>
       </thead>
       <tbody>
-        <%= form.collection_check_boxes :employee_ids, Employee.all, :id, :full_name do |b| %>
+        <% @employees.each.with_index do |employee, index|  %>
+          <%= form.fields_for :line_employees, timesheet.line_employees.build do |line_employee_form| %>
           <tr>
-            <td><%= b.label(class: "form-check") { b.check_box(class: "form-check-input me-2") + b.text } %></td>
-            <td><%= form.select(:status, LineEmployee.statuses.keys.map {|status| [status.titleize,status]}, {}, { class: "form-select" })  %></td>
+              <td><%= line_employee_form.check_box :employee_id, {class:"form-check-input"}, employee.id, 0 %>  <%= line_employee_form.label employee.full_name, class:"form-check-label" %></td>
+              <td><%= line_employee_form.select :status, options_for_select([  ["Selecione", ""],  "presenca", "falta", "atestado", "inss", "ferias", "licenca", "atrasado", "vacancia", "antecipada"]), {}, { class: "form-select" } %></td>
           </tr>
           <% end %>
-        
-        <%= form.fields_for :line_employees do |line_employee_form| %>
-        <tr>
-            <td><%= line_employee_form.collection_select :employee_id, Employee.all, :id, :full_name, {prompt: "Selecione"}, {class: "form-select"} %></td>
-            <td><%= line_employee_form.select :status, options_for_select([  ["Selecione", ""],  "presenca", "falta", "atestado", "inss", "ferias", "licenca", "atrasado", "vacancia", "antecipada"]), {}, { class: "form-select" } %></td>
-        </tr>
         <% end %>
       </tbody>
     </table>

@@ -17,7 +17,6 @@
             <th scope="col">Data de atualização</th>
             <th scope="col">Hora de atualização</th>
             <th scope="col"></th>
-            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
@@ -27,8 +26,8 @@
               <td><%= timesheet.created_at.strftime("%d/%m/%Y") %> | <%= timesheet.created_at.strftime("%H:%M") %></td>
               <td><%= timesheet.updated_at.strftime("%d/%m/%Y") %></td>
               <td><%= timesheet.updated_at.strftime("%H:%M") %></td>
-              <td><%= link_to '', timesheet, class: "btn btn-primary bi bi-eye" %></td>
-              <td><%= link_to '', edit_timesheet_path(timesheet), class: "btn btn-primary bi bi-pencil-square" %></td>
+              <td><%= link_to '', timesheet, class: "btn btn-primary bi bi-eye" %> <%= link_to '', edit_timesheet_path(timesheet), class: "btn btn-primary bi bi-pencil-square" %></td>
+
             </tr>
           <% end %>
         </tbody>

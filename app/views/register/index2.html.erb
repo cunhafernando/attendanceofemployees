@@ -214,7 +214,7 @@
                                                 <div class="d-grid gap-2 d-md-block">
                                                     <div class="text-dark">
                                                         <% @line_employees.each do |line_employee|  %>
-                                                            <% if (line_employee.employee.sector.name == "Faturamento") && (LineEmployee.where("created_at >= ?", Time.zone.now.beginning_of_day) ) %>
+                                                            <% if (line_employee.employee.sector.name == "Faturamento") && (LineEmployee.where(created_at: Date.new..2.days.ago) ) %>
                                                                 <button type="button" class="btn <% if line_employee.status == "presenca" %>
                                                                     btn-success
                                                                     <% elsif line_employee.status == "falta" %>
@@ -250,7 +250,7 @@
                                                 <div class="d-grid gap-2 d-md-block">
                                                     <div class="text-dark">
                                                         <% @line_employees.each do |line_employee|  %>
-                                                            <% if (line_employee.employee.sector.name == "Maqueiro") && (LineEmployee.where("DATE(created_at) = DATE(?)", Time.now) ) %>
+                                                            <% if (line_employee.employee.sector.name == "Maqueiro") && (line_employee.created_at > Time.now - 24.hours) %>
                                                                 <button type="button" class="btn <% if line_employee.status == "presenca" %>
                                                                     btn-success
                                                                     <% elsif line_employee.status == "falta" %>

@@ -83,5 +83,5 @@ production:
   <<: *default
   url: <%= ENV["DATABASE_URL"] %>
   database: attendanceofemployees_production
-  username: attendanceofemployees
+  username: <%= ENV["ATTENDANCEOFEMPLOYEES_DATABASE_USERNAME"] %>
   password: <%= ENV["ATTENDANCEOFEMPLOYEES_DATABASE_PASSWORD"] %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_28_183718) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_23_162435) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,6 +24,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_28_183718) do
     t.bigint "office_id"
     t.bigint "sectional_id"
     t.bigint "sector_id"
+    t.integer "bond"
+    t.integer "orderly"
     t.index ["office_id"], name: "index_employees_on_office_id"
     t.index ["sectional_id"], name: "index_employees_on_sectional_id"
     t.index ["sector_id"], name: "index_employees_on_sector_id"

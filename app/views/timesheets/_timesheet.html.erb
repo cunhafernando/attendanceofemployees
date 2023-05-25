@@ -20,8 +20,8 @@
           <td><%= line_employee.employee.office.name %></td>
           <td><%= line_employee.employee.sectional.name %></td>
           <td><%= line_employee.status %></td>
-          <td><%= line_employee.created_at %></td>
-          <td><%= line_employee.updated_at %></td>
+          <td><%= line_employee.created_at.strftime("%d/%m/%Y | %H:%M") %></td>
+          <td><%= line_employee.updated_at.strftime("%d/%m/%Y | %H:%M") %></td>
         </tr>
       <% end %>
     </tbody>

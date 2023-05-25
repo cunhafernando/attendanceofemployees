@@ -7,6 +7,8 @@ class Employee < ApplicationRecord
     belongs_to :sector
     has_many :line_employees
     has_many :timesheets, through: :line_employees
+    enum orderly: [:diurno, :noturno]
+    enum bond: [:hegv, :upa]
 
     def full_name
         "#{firstname} #{lastname}"

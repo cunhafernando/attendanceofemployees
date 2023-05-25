@@ -30,10 +30,17 @@
       <strong><%= form.label "Matrícula:", class: "form-label" %></strong>
       <%= form.text_field :registration, class: "form-control" %>
     </div>
-
     <div class="col-md-4">
       <strong><%= form.label "Cargo:", class: "form-label" %></strong>
       <%= form.collection_select :office_id, Office.all, :id, :name, {prompt: "Selecione um cargo"}, {class: "form-select"} %>
+    </div>
+    <div class="col-md-4">
+      <strong><%= form.label "Plantão:", class: "form-label" %></strong>
+      <%= form.select :orderly, options_for_select([  ["Selecione um", ""],  "diurno", "noturno"]), {}, { class: "form-select" } %>
+    </div>
+    <div class="col-md-4">
+      <strong><%= form.label "Vínculo:", class: "form-label" %></strong>
+      <%= form.select :bond, options_for_select([["Selecione um", ""], "hegv", "upa"]), {}, {class: "form-select"} %>
     </div>
     <div class="col-md-4">
       <strong><%= form.label "Local:", class: "form-label" %></strong>

@@ -26,7 +26,7 @@ class SectionalsController < ApplicationController
 
     respond_to do |format|
       if @sectional.save
-        format.html { redirect_to sectional_url(@sectional), notice: "Sectional was successfully created." }
+        format.html { redirect_to sectional_url(@sectional), notice: "O local foi criado com sucesso." }
         format.json { render :show, status: :created, location: @sectional }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,7 @@ class SectionalsController < ApplicationController
   def update
     respond_to do |format|
       if @sectional.update(sectional_params)
-        format.html { redirect_to sectional_url(@sectional), notice: "Sectional was successfully updated." }
+        format.html { redirect_to sectional_url(@sectional), notice: "O local foi atualizado com sucesso." }
         format.json { render :show, status: :ok, location: @sectional }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,7 +53,7 @@ class SectionalsController < ApplicationController
     @sectional.destroy
 
     respond_to do |format|
-      format.html { redirect_to sectionals_url, notice: "Sectional was successfully destroyed." }
+      format.html { redirect_to sectionals_url, notice: "O local foi deletado com sucesso." }
       format.json { head :no_content }
     end
   end

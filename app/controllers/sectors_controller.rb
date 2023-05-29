@@ -26,7 +26,7 @@ class SectorsController < ApplicationController
 
     respond_to do |format|
       if @sector.save
-        format.html { redirect_to sector_url(@sector), notice: "Sector was successfully created." }
+        format.html { redirect_to sector_url(@sector), notice: "O setor foi criado com sucesso." }
         format.json { render :show, status: :created, location: @sector }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,7 @@ class SectorsController < ApplicationController
   def update
     respond_to do |format|
       if @sector.update(sector_params)
-        format.html { redirect_to sector_url(@sector), notice: "Sector was successfully updated." }
+        format.html { redirect_to sector_url(@sector), notice: "O setor foi atualizado com sucesso." }
         format.json { render :show, status: :ok, location: @sector }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,7 +53,7 @@ class SectorsController < ApplicationController
     @sector.destroy
 
     respond_to do |format|
-      format.html { redirect_to sectors_url, notice: "Sector was successfully destroyed." }
+      format.html { redirect_to sectors_url, notice: "O setor foi deletado com sucesso." }
       format.json { head :no_content }
     end
   end

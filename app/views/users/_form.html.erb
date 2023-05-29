@@ -2,8 +2,8 @@
   <% if user.errors.any? %>
     <div class="container">
       <div class="row">
-        <div class="col alert alert-success alert-dismissible fade show mt-3" role="alert">
-          <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+        <div class="col alert alert-danger alert-dismissible fade show mt-3" role="alert">
+          <h2>Encontramos <%= pluralize(user.errors.count, "error") %> ao salvar o formulário.</h2>
 
           <ul>
             <% user.errors.each do |error| %>

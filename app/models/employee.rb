@@ -1,7 +1,7 @@
 class Employee < ApplicationRecord
     validates :firstname, presence: { message: 'O sobrenome é obrigatório.' }
     validates :lastname, presence: { message: 'O sobrenome é obrigatório.' }
-    validates :registration, presence: true, uniqueness: { message: 'Esta matrícula já está cadastrada no sistema.' }
+    validates :registration, presence: { message: 'O número de matrícula é obrigatório.' }, uniqueness: { message: 'Esta matrícula já está cadastrada no sistema.' }
     belongs_to :user
     belongs_to :office
     belongs_to :sectional

@@ -1,6 +1,6 @@
 class Employee < ApplicationRecord
     validates :firstname, :lastname, presence: true
-    validates :registration, presence: true, uniqueness: true, :message => "Esta matricula já está cadastrada"
+    validates :registration, presence: true, uniqueness: true
     belongs_to :user
     belongs_to :office
     belongs_to :sectional

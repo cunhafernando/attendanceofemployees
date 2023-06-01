@@ -520,11 +520,11 @@
                                     <div class="row g-0">
                                         <div class="col-md-12">
                                             <div class="card-body text-start">
-                                                <h4 class="text-dark text-center"><strong>TI</strong></h4>
+                                                <h4 class="text-dark text-center"><strong>Tecnologia da Informação</strong></h4>
                                                 <div class="d-grid gap-2 d-md-block">
                                                     <div class="text-dark">
                                                         <% @line_employees.each do |line_employee|  %>
-                                                            <% if (line_employee.employee.sector.name == "TI") && line_employee.created_at.to_date == Date.current %>
+                                                            <% if (line_employee.employee.sector.name == "Tecnologia da Informação") && line_employee.created_at.to_date == Date.current %>
                                                                 <button type="button" class="btn <% if line_employee.status == "presenca" %>
                                                                     btn-success
                                                                     <% elsif line_employee.status == "falta" %>

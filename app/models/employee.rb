@@ -12,7 +12,7 @@ class Employee < ApplicationRecord
     enum bond: [:hegv, :upa]
 
     def full_name
-        "#{firstname} #{lastname}"
+        "#{firstname} #{middlename} #{lastname}"
     end
     
 end

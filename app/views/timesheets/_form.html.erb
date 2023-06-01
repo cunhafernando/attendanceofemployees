@@ -32,7 +32,7 @@
         <% @employees.each.with_index do |employee, index|  %>
           <%= form.fields_for :line_employees, timesheet.line_employees.build do |line_employee_form| %>
           <tr>
-              <td class="text-capitalize"><%= line_employee_form.check_box :employee_id, {class:"form-check-input"}, employee.id, 0 %>  <%= line_employee_form.label employee.firstname, class:"form-check-label" %> <%= line_employee_form.label employee.middlename, class:"form-check-label" %> <%= line_employee_form.label employee.lastname, class:"form-check-label" %></td>
+              <td class="text-capitalize"><%= line_employee_form.check_box :employee_id, {class:"form-check-input"}, employee.id, 0 %>  <%= line_employee_form.label employee.full_name, class:"form-check-label" %></td>
               <td class="text-capitalize"><%= line_employee_form.label employee.sector.name, class:"form-check-label" %></td>
               <td><%= line_employee_form.select :status, options_for_select([  ["Selecione", ""],  "presenca", "falta", "atestado", "inss", "ferias", "licenca", "atrasado", "vacancia", "antecipada"]), {}, { class: "form-select text-capitalize" } %></td>
           </tr>

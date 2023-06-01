@@ -16,6 +16,8 @@ class RegisterController < ApplicationController
     @licenca_count = ((Timesheet.joins(:line_employees).where(:line_employees => {:status => "licenca"})).and(Timesheet.joins(:line_employees).where(:line_employees => {created_at: Date.today.all_day}))).count(:id)
     @vacancia_count = ((Timesheet.joins(:line_employees).where(:line_employees => {:status => "vacancia"})).and(Timesheet.joins(:line_employees).where(:line_employees => {created_at: Date.today.all_day}))).count(:id)
     @antecipada_count = ((Timesheet.joins(:line_employees).where(:line_employees => {:status => "antecipada"})).and(Timesheet.joins(:line_employees).where(:line_employees => {created_at: Date.today.all_day}))).count(:id)
+    @upa_count = ((Timesheet.joins(:line_employees).where(:line_employees => {:status => "upa"})).and(Timesheet.joins(:line_employees).where(:line_employees => {created_at: Date.today.all_day}))).count(:id)
+    @hegv_count = ((Timesheet.joins(:line_employees).where(:line_employees => {:status => "hegv"})).and(Timesheet.joins(:line_employees).where(:line_employees => {created_at: Date.today.all_day}))).count(:id)
     @color_button = if Timesheet.joins(:line_employees).where(:line_employees => {:status => "presenca"})
       "success"
     else

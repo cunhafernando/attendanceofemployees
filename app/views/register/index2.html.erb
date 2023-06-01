@@ -251,11 +251,11 @@
                                                                     btn-secondary
                                                                     <% elsif line_employee.status == "vacancia" %>
                                                                     btn-purple
-                                                                    <% else %>
                                                                     <% elsif line_employee.status == "upa" %>
                                                                     btn-indigo
                                                                     <% elsif line_employee.status == "hegv" %>
                                                                     btn-pink
+                                                                    <% else %>
                                                                     btn-orange
                                                                     <% end %>btn-sm mb-1"><%= line_employee.employee.full_name %> | <%= line_employee.employee.sectional.name %></button>
                                                             <% end %>

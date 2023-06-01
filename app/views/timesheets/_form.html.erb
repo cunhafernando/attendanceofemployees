@@ -20,7 +20,7 @@
       <strong><%= form.label "Setor", class: "form-label" %></strong>
       <%= form.collection_select :sector_id, Sector.all, :id, :name, {prompt: "Selecione um setor"}, {class: "form-select"} %>
     </div>
-    <table id="table" data-height="500" data-toggle="table" data-height="500" data-pagination="true" data-search="true" data-search-accent-neutralise="true" class="table table-bordered table-striped" >
+    <table id="table" data-height="500" data-toggle="table" data-height="500" data-search="true" data-search-accent-neutralise="true" class="table table-bordered table-striped" >
       <thead>
         <tr>
           <th scope="col">Funcionários</th>

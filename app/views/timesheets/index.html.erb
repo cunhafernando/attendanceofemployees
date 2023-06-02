@@ -20,7 +20,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @timesheets.each do |timesheet|  %>
+          <% @timesheets.order("created_at desc").each do |timesheet|  %>
             <tr>
               <td><%= timesheet.sector.name %></td>
               <td><%= timesheet.created_at.strftime("%d/%m/%Y") %> | <%= timesheet.created_at.strftime("%H:%M") %></td>

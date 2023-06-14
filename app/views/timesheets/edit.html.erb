@@ -5,7 +5,29 @@
     </div>
     <div class="col-3 text-end">
     </div>
-    <%= render "form", timesheet: @timesheet %>
+    <%= form_with(model: @timesheet) do |form| %>
+      <% if @timesheet.errors.any? %>
+        <div class="container">
+          <div class="row">
+            <div class="col alert alert-danger alert-dismissible fade show mt-3" role="alert">
+              <strong>Encontramos <%= pluralize(timesheet.errors.count, "erro") %> ao salvar o formulário.</strong>
+
+              <ul>
+                <% @timesheet.errors.each do |error| %>
+                  <li><%= error.full_message %></li>
+                <% end %>
+              </ul>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          </div>
+        </div>
+      <% end %>
+  
+
+  
+  
+<% end %>
+
     <br>
     <div>
       <%= link_to "Mostrar", @timesheet, class: "btn btn-primary" %>

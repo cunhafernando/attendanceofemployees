@@ -1,0 +1,89 @@
+<div class="carousel-item" data-bs-interval="5000">
+    <div class="col text-center text-dark">
+        <h3><strong>Noturno</strong></h3>
+    </div>
+    <div class="card mb-3">
+        <div class="row g-0">
+            <div class="col-md-12">
+                <div class="card-body text-start">
+                    <h4 class="text-dark text-center"><strong>SHL</strong></h4>
+                    <div class="d-grid gap-2 d-md-block">
+                        <div class="text-dark">
+                            <% @line_employees.order("status asc").each do |line_employee|  %>
+                                <% if (line_employee.employee.sector.name == "SHL" && line_employee.employee.orderly == "noturno") && line_employee.created_at.to_date == Date.current %>
+                                    <button type="button" class="btn <% if line_employee.status == "presenca" %>
+                                        btn-success
+                                        <% elsif line_employee.status == "falta" %>
+                                        btn-danger
+                                        <% elsif line_employee.status == "atrasado" %>
+                                        btn-warning
+                                        <% elsif line_employee.status == "atestado" %>
+                                        btn-dark
+                                        <% elsif line_employee.status == "inss" %>
+                                        btn-primary
+                                        <% elsif line_employee.status == "ferias" %>
+                                        btn-info
+                                        <% elsif line_employee.status == "licenca" %>
+                                        btn-secondary
+                                        <% elsif line_employee.status == "vacancia" %>
+                                        btn-purple
+                                        <% elsif line_employee.status == "upa" %>
+                                        btn-indigo
+                                        <% elsif line_employee.status == "hegv" %>
+                                        btn-pink
+                                        <% elsif line_employee.status == "folga" %>
+                                        btn-green
+                                        <% else %>
+                                        btn-orange
+                                        <% end %>btn-sm mb-1"><%= line_employee.employee.firstname %> <%= line_employee.employee.lastname %> | <%= line_employee.employee.sectional.name %></button>
+                                <% end %>
+                             <% end %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mb-3">
+        <div class="row g-0">
+            <div class="col-md-12">
+                <div class="card-body text-start">
+                    <h4 class="text-dark text-center"><strong>Rouparia</strong></h4>
+                    <div class="d-grid gap-2 d-md-block">
+                        <div class="text-dark">
+                            <% @line_employees.order("status asc").each do |line_employee|  %>
+                                <% if (line_employee.employee.sector.name == "Rouparia" && line_employee.employee.orderly == "noturno") && line_employee.created_at.to_date == Date.current %>
+                                    <button type="button" class="btn <% if line_employee.status == "presenca" %>
+                                        btn-success
+                                        <% elsif line_employee.status == "falta" %>
+                                        btn-danger
+                                        <% elsif line_employee.status == "atrasado" %>
+                                        btn-warning
+                                        <% elsif line_employee.status == "atestado" %>
+                                        btn-dark
+                                        <% elsif line_employee.status == "inss" %>
+                                        btn-primary
+                                        <% elsif line_employee.status == "ferias" %>
+                                        btn-info
+                                        <% elsif line_employee.status == "licenca" %>
+                                        btn-secondary
+                                        <% elsif line_employee.status == "vacancia" %>
+                                        btn-purple
+                                        <% elsif line_employee.status == "upa" %>
+                                        btn-indigo
+                                        <% elsif line_employee.status == "hegv" %>
+                                        btn-pink
+                                        <% elsif line_employee.status == "folga" %>
+                                        btn-green
+                                        <% else %>
+                                        btn-orange
+                                        <% end %>btn-sm mb-1"><%= line_employee.employee.firstname %> <%= line_employee.employee.lastname %> | <%= line_employee.employee.sectional.name %></button>
+                                <% end %>
+                             <% end %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

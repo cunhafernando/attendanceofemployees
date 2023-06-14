@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :timesheets
   get 'register/index'
-  get 'register/index2'
+  get 'dashboard', to: 'register#index2', as: :dashboard
   resources :sectionals
   resources :employees
   resources :offices

@@ -16,4 +16,3 @@ import "bootstrap-table/dist/locale/bootstrap-table-pt-BR"
 import "bootstrap-table/dist/extensions/export/bootstrap-table-export"
 import "datatables.net/js/jquery.dataTables"
 import "bootstrap-table/dist/extensions/filter-control/bootstrap-table-filter-control"
-

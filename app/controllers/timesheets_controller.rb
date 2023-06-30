@@ -1,6 +1,6 @@
 class TimesheetsController < ApplicationController
   before_action :set_timesheet, only: %i[ show edit update destroy ]
-
+  
   # GET /timesheets or /timesheets.json
   def index
     @timesheets = Timesheet.all

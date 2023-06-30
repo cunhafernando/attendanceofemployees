@@ -22,10 +22,47 @@
           </div>
         </div>
       <% end %>
-  
+      <div class="row g-3 mb-2">
+        <div class="col-3 mb-3" >
+          <strong><%= form.label "Setor", class: "form-label" %></strong>
+          <%= form.collection_select :sector_id, Sector.all, :id, :name, {prompt: "Selecione um setor"}, {class: "form-select"} %>
+        </div>
+        <table id="table" data-height="500" data-toggle="table" data-height="500" data-trim-on-search="false" data-filter-control="true" data-search-accent-neutralise="false" class="table table-bordered table-striped " >
+          <thead>
+            <tr>
+              <th scope="col" >Funcionários</th>
+              <th scope="col" >Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <%= form.fields_for :line_employees do |line_employee_form| %>
+              <tr>
+                <td><%= line_employee_form.label :employee_id, :full_name %></td>
+                <td><%= @timesheet.employee_ids.full_name %></td>
+                <td><%= line_employee_form.select :status, options_for_select([  ["Selecione", ""],  "presenca", "falta", "atestado", "inss", "ferias", "licenca", "atrasado", "vacancia", "antecipada", "upa", "hegv", "folga"]), {}, { class: "form-select text-capitalize" } %></td>
+              </tr>
+            <% end %>
+        
+            <% @timesheet.line_employees do |line_employee|  %>
+            <% end %>
+      
 
-  
-  
+      <% @timesheet.line_employees.each do |line_employee|  %>
+        <tr>
+          <td><%= line_employee.employee.full_name %></td>
+          <td><%= line_employee.employee.office.name %></td>
+          <td><%= line_employee.employee.sectional.name %></td>
+          <td><%= line_employee.status %></td>
+          <td><%= line_employee.created_at.strftime("%d/%m/%Y | %H:%M") %></td>
+          <td><%= line_employee.updated_at.strftime("%d/%m/%Y | %H:%M") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div>
+      <%= form.submit 'Salvar', class: 'btn btn-success' %>
+  </div>
 <% end %>
 
     <br>
